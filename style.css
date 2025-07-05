@@ -1,0 +1,126 @@
+ 
+
+body {
+background: linear-gradient(135deg, #d4fc79, #96e6a1);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ 
+
+.card {
+  border: none;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+h3 {
+  color: #343a40;
+  font-weight: 600;
+}
+
+input.form-control {
+  border-radius: 10px 0 0 10px;
+  border-right: none;
+  font-size: 16px;
+}
+
+.btn-primary {
+  border-radius: 0 10px 10px 0;
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+#taskList li {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.2s;
+}
+
+#taskList li:hover {
+  transform: scale(1.01);
+  background-color: #e9ecef;
+}
+
+#taskList button {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: #212529;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #bd2130;
+}
+ 
+ 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+ 
+#taskList li {
+  animation: fadeIn 0.4s ease-in-out;
+}
+ 
+.btn-primary:hover {
+  animation: pulse 0.3s ease-in-out;
+}
+ 
+.list-group-item {
+  transition: all 0.3s ease;
+}
+ 

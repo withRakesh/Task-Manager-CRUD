@@ -1,0 +1,99 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ </head>
+ <body style="text-align: center; padding: 50px;">
+<div class="container" >
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card  border-0">
+          <div class="card-body text-center" style="height: 80vh;">
+            <h3 class="mb-4 bg-success p-3 text-white rounded">Task Manager</h3>
+            <div class="input-group mb-3">
+              <input class="form-control" type="text" id="inputText" placeholder="Enter your task">
+              <button onclick="addTask()" class="btn btn-primary">Add</button>
+            </div>
+            <ul id="taskList" class="list-group task-item"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+ 
+  <script>
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function saveTasks(){
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    //create a task
+    function addTask(){
+      const input = document.getElementById("inputText");
+      const value = input.value.trim();
+
+      if(value !== ""){
+        tasks.push(value);
+        saveTasks();
+      }else{
+        alert("enter a task")
+      }
+      read()
+    }
+
+    //Read a Task
+  function read(){
+  const taskList = document.getElementById("taskList");
+  taskList.innerHTML= "";
+
+  tasks.forEach((task, index)=>{
+    const listItem = document.createElement("li");
+    listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+    listItem.innerHTML = `
+      <span>${task}</span>
+      <div>
+        <button class="btn btn-sm btn-warning me-1" onclick="edit(${index})" title="Edit Task">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn btn-sm btn-danger" onclick="deleteTask(${index})" title="Delete Task">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+    `;
+    taskList.appendChild(listItem);
+  });
+  saveTasks();
+}
+
+
+    //Edit a task
+    function edit(index){
+      const newTask = prompt("enter new task", tasks[index]);
+      if(newTask.trim() !== ""){
+        tasks[index] = newTask;
+        saveTasks()
+        read()
+      }}
+
+
+      //delete a task
+
+      function deleteTask(index){
+        tasks.splice(index, 1);
+        saveTasks
+        read()
+
+      }
+
+  </script>
+
+ </body>
+ </html>
